@@ -55,12 +55,12 @@ int update_temperature_state(temperature_monitor_t * temp){
 
   switch(temp->state) {
     case NORMAL_TEMP: 
-      if (temp->current_temperature >= TEPID_CELSIUS) {
+      if (temp->current_temperature > TEPID_CELSIUS) {
         temp->state = TEPID;
       }
       break;
     case TEPID:
-      if (temp->current_temperature >= WARM_CELSIUS) {
+      if (temp->current_temperature > WARM_CELSIUS) {
         temp->state = WARM;
       } 
       if (temp->current_temperature <= TEPID_CELSIUS - HYSTERESIS_CELSIUS) {
@@ -68,7 +68,7 @@ int update_temperature_state(temperature_monitor_t * temp){
       }
       break;
     case WARM:
-      if (temp->current_temperature >= HOT_CELSIUS) {
+      if (temp->current_temperature > HOT_CELSIUS) {
         temp->state = HOT;
       } 
       if (temp->current_temperature <= WARM_CELSIUS - HYSTERESIS_CELSIUS) {
@@ -76,7 +76,7 @@ int update_temperature_state(temperature_monitor_t * temp){
       }
       break;
     case HOT:
-      if (temp->current_temperature >= VERY_HOT_CELSIUS) {
+      if (temp->current_temperature > VERY_HOT_CELSIUS) {
         temp->state = VHOT;
       } 
       if (temp->current_temperature <= HOT_CELSIUS - HYSTERESIS_CELSIUS) {
