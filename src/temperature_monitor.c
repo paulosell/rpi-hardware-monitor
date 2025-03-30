@@ -84,7 +84,7 @@ int update_temperature_state(temperature_monitor_t * temp){
       }
       break;
     case VHOT:
-      if (temp->current_temperature <= HOT_CELSIUS - HYSTERESIS_CELSIUS) {
+      if (temp->current_temperature <= VERY_HOT_CELSIUS - HYSTERESIS_CELSIUS) {
         temp->state = HOT;
       }
       break;
